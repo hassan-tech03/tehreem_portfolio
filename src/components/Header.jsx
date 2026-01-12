@@ -30,14 +30,14 @@ const Header = () => {
   }
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
-    }`}>
-      <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <header className={`position-fixed top-0 start-0 end-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-white backdrop-blur-sm shadow-lg' : 'bg-transparent'
+    }`} style={{backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent'}}>
+      <nav className="container">
+        <div className="row align-items-center justify-content-between" style={{height: '4rem'}}>
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <h1 className={`text-xl font-bold transition-colors duration-300 ${
+          <div className="col-auto">
+            <h1 className={`text-xl font-bold transition-colors duration-300 mb-0 ${
               isScrolled ? 'text-gray-900' : 'text-white'
             }`}>
               Portfolio
@@ -45,14 +45,14 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+          <div className="col-auto d-none d-md-block">
+            <div className="d-flex align-items-center space-x-8">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className={`px-3 py-2 text-sm font-medium transition-colors duration-300 hover:text-blue-600 ${
-                    isScrolled ? 'text-gray-700' : 'text-white hover:text-blue-200'
+                  className={`px-3 py-2 text-sm font-medium transition-colors duration-300 border-0 bg-transparent hover-text-blue-600 ${
+                    isScrolled ? 'text-gray-700' : 'text-white hover-text-blue-200'
                   }`}
                 >
                   {item.name}
@@ -62,12 +62,13 @@ const Header = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="col-auto d-md-none">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 rounded-md transition-colors duration-300 ${
-                isScrolled ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/10'
+              className={`p-2 rounded-md transition-colors duration-300 border-0 ${
+                isScrolled ? 'text-gray-700 hover-bg-gray-100' : 'text-white'
               }`}
+              style={{backgroundColor: isScrolled && !isMobileMenuOpen ? 'transparent' : 'rgba(255, 255, 255, 0.1)'}}
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isMobileMenuOpen ? (
@@ -82,13 +83,13 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-sm rounded-lg mt-2 shadow-lg">
+          <div className="d-md-none">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-white backdrop-blur-sm rounded-lg mt-2 shadow-lg" style={{backgroundColor: 'rgba(255, 255, 255, 0.95)'}}>
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md w-full text-left transition-colors duration-200"
+                  className="d-block px-3 py-2 text-base font-medium text-gray-700 hover-text-blue-600 hover-bg-gray-50 rounded-md w-100 text-start transition-colors duration-200 border-0 bg-transparent"
                 >
                   {item.name}
                 </button>

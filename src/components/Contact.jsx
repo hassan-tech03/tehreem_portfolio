@@ -97,189 +97,195 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Get In Touch
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Ready to start your next project? Let's discuss how we can work together to bring your ideas to life.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
-                Let's Start a Conversation
-              </h3>
-              <p className="text-gray-600 leading-relaxed mb-8">
-                I'm always excited to discuss new opportunities, collaborate on interesting projects, 
-                or simply chat about web development. Whether you have a project in mind or just want 
-                to connect, I'd love to hear from you.
+    <section id="contact" className="py-16 md-py-24 bg-white">
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-12">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md-text-4xl font-bold text-gray-900 mb-4">
+                Get In Touch
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Ready to start your next project? Let's discuss how we can work together to bring your ideas to life.
               </p>
             </div>
 
-            {/* Contact Details */}
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => (
-                <div key={index} className="flex items-center space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
-                    {info.icon}
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-900">{info.title}</h4>
-                    {info.link ? (
-                      <a 
-                        href={info.link}
-                        className="text-gray-600 hover:text-blue-600 transition-colors duration-200"
-                      >
-                        {info.value}
-                      </a>
-                    ) : (
-                      <p className="text-gray-600">{info.value}</p>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Social Links */}
-            <div>
-              <h4 className="font-medium text-gray-900 mb-4">Follow Me</h4>
-              <div className="flex space-x-4">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.url}
-                    className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white transition-all duration-200 transform hover:scale-110"
-                    aria-label={social.name}
-                  >
-                    {social.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Availability */}
-            <div className="bg-green-50 p-6 rounded-xl border border-green-100">
-              <div className="flex items-center space-x-3">
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="font-medium text-green-800">Available for new projects</span>
-              </div>
-              <p className="text-green-700 text-sm mt-2">
-                Currently accepting new freelance and full-time opportunities
-              </p>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="bg-gray-50 p-8 rounded-2xl">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+            <div className="row">
+              {/* Contact Information */}
+              <div className="col-12 col-lg-6 mb-4 mb-lg-0">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    placeholder="Your full name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  placeholder="What's this about?"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
-                  placeholder="Tell me about your project or just say hello!"
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
-                  isSubmitting
-                    ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-blue-600 hover:bg-blue-700 transform hover:scale-105'
-                } text-white`}
-              >
-                {isSubmitting ? (
-                  <span className="flex items-center justify-center">
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Sending...
-                  </span>
-                ) : (
-                  'Send Message'
-                )}
-              </button>
-
-              {/* Success Message */}
-              {submitStatus === 'success' && (
-                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                  <div className="flex items-center">
-                    <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-green-800 font-medium">Message sent successfully!</span>
-                  </div>
-                  <p className="text-green-700 text-sm mt-1">
-                    Thank you for reaching out. I'll get back to you soon!
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                    Let's Start a Conversation
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    I'm always excited to discuss new opportunities, collaborate on interesting projects, 
+                    or simply chat about web development. Whether you have a project in mind or just want 
+                    to connect, I'd love to hear from you.
                   </p>
                 </div>
-              )}
-            </form>
+
+                {/* Contact Details */}
+                <div className="mb-6">
+                  {contactInfo.map((info, index) => (
+                    <div key={index} className="d-flex align-items-center mb-4">
+                      <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg d-flex align-items-center justify-content-center text-blue-600 me-3">
+                        {info.icon}
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-gray-900 mb-1">{info.title}</h4>
+                        {info.link ? (
+                          <a 
+                            href={info.link}
+                            className="text-gray-600 hover-text-blue-600 transition-colors duration-200 text-decoration-none"
+                          >
+                            {info.value}
+                          </a>
+                        ) : (
+                          <p className="text-gray-600 mb-0">{info.value}</p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Social Links */}
+                <div className="mb-6">
+                  <h4 className="font-medium text-gray-900 mb-3">Follow Me</h4>
+                  <div className="d-flex">
+                    {socialLinks.map((social, index) => (
+                      <a
+                        key={social.name}
+                        href={social.url}
+                        className="w-10 h-10 bg-gray-100 rounded-lg d-flex align-items-center justify-content-center text-gray-600 hover-bg-blue-600 hover-text-white transition-all duration-200 transform hover-scale-110 text-decoration-none me-3"
+                        aria-label={social.name}
+                      >
+                        {social.icon}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Availability */}
+                <div className="bg-green-50 p-4 rounded-xl border border-green-100">
+                  <div className="d-flex align-items-center mb-2">
+                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse me-2"></div>
+                    <span className="font-medium text-green-800">Available for new projects</span>
+                  </div>
+                  <p className="text-green-700 text-sm mb-0">
+                    Currently accepting new freelance and full-time opportunities
+                  </p>
+                </div>
+              </div>
+
+              {/* Contact Form */}
+              <div className="col-12 col-lg-6">
+                <div className="bg-gray-50 p-8 rounded-2xl">
+                  <form onSubmit={handleSubmit}>
+                    <div className="row mb-3">
+                      <div className="col-12 col-md-6 mb-3">
+                        <label htmlFor="name" className="form-label text-sm font-medium text-gray-700">
+                          Full Name
+                        </label>
+                        <input
+                          type="text"
+                          id="name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
+                          className="form-control px-4 py-3 border border-gray-300 rounded-lg focus-ring-2 focus-ring-blue-500 focus-border-transparent transition-all duration-200"
+                          placeholder="Your full name"
+                        />
+                      </div>
+                      <div className="col-12 col-md-6 mb-3">
+                        <label htmlFor="email" className="form-label text-sm font-medium text-gray-700">
+                          Email Address
+                        </label>
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                          className="form-control px-4 py-3 border border-gray-300 rounded-lg focus-ring-2 focus-ring-blue-500 focus-border-transparent transition-all duration-200"
+                          placeholder="your.email@example.com"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="mb-3">
+                      <label htmlFor="subject" className="form-label text-sm font-medium text-gray-700">
+                        Subject
+                      </label>
+                      <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        required
+                        className="form-control px-4 py-3 border border-gray-300 rounded-lg focus-ring-2 focus-ring-blue-500 focus-border-transparent transition-all duration-200"
+                        placeholder="What's this about?"
+                      />
+                    </div>
+
+                    <div className="mb-4">
+                      <label htmlFor="message" className="form-label text-sm font-medium text-gray-700">
+                        Message
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        rows={5}
+                        className="form-control px-4 py-3 border border-gray-300 rounded-lg focus-ring-2 focus-ring-blue-500 focus-border-transparent transition-all duration-200 resize-none"
+                        placeholder="Tell me about your project or just say hello!"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className={`w-100 py-3 px-6 rounded-lg font-medium transition-all duration-200 border-0 ${
+                        isSubmitting
+                          ? 'bg-gray-400 cursor-not-allowed'
+                          : 'btn-primary transform hover-scale-105'
+                      } text-white`}
+                    >
+                      {isSubmitting ? (
+                        <span className="d-flex align-items-center justify-content-center">
+                          <svg className="animate-spin me-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          </svg>
+                          Sending...
+                        </span>
+                      ) : (
+                        'Send Message'
+                      )}
+                    </button>
+
+                    {/* Success Message */}
+                    {submitStatus === 'success' && (
+                      <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-4">
+                        <div className="d-flex align-items-center">
+                          <svg className="w-5 h-5 text-green-500 me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span className="text-green-800 font-medium">Message sent successfully!</span>
+                        </div>
+                        <p className="text-green-700 text-sm mt-1 mb-0">
+                          Thank you for reaching out. I'll get back to you soon!
+                        </p>
+                      </div>
+                    )}
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
